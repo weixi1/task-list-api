@@ -10,14 +10,14 @@ class Task(db.Model):
     description: Mapped[str]
     completed_at: Mapped[Optional[datetime]]
 
-#     def to_dict(self):
-#         task_as_dict ={
-#             "id": self.id,
-#             "title": self.title,
-#             "description": self.description,
-#             "is_complete": self.completed_at
-#         }
-#         return task_as_dict
+    def to_dict(self):
+        task_as_dict ={
+            "id": self.id,
+            "title": self.title,
+            "description": self.description,
+            "is_complete": bool(self.completed_at)
+        }
+        return task_as_dict
 
 # @classmethod
 # def from_dict(cls, task_data):
