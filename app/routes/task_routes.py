@@ -1,5 +1,6 @@
 from flask import Blueprint, abort, make_response, request, Response, jsonify
 from app.models.task import Task
+from sqlalchemy import desc
 from ..db import db
 
 tasks_bp = Blueprint("tasks_bp", __name__, url_prefix="/tasks")
@@ -50,6 +51,12 @@ def get_all_tasks():
     elif completed_at_param == "false":
         query = query.where(Task.completed_at.is_(None))
 
+    sort_param = request.args.get("sort")
+    if sort_param == "asc":
+        query = query.order_by(Task.title)
+    if sort_param == "desc":
+        query = query.order_by(desc(Task.title))
+
     tasks = db.session.scalars(query.order_by(Task.id))
 
     tasks_response = []
@@ -61,7 +68,7 @@ def get_all_tasks():
             "is_complete": bool(task.completed_at)
         })
     
-    return tasks_response
+    return tasks_response, 200
 
 @tasks_bp.get("/<task_id>")
 def get_one_task(task_id):
@@ -121,3 +128,4 @@ def delete_task(task_id):
     return jsonify({
         "details": f'Task {task.id} "{task.title}" successfully deleted'
     }), 200
+
