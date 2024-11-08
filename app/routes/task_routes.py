@@ -136,7 +136,7 @@ def mark_task_complete(task_id):
         }, 200
 
 def patch_complete(task_id):
-    task = validate_task(Task, task_id)
+    task = validate_task(task_id)
     task.completed_at = datetime.now().isoformat()
     db.session.commit()
     
