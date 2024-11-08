@@ -21,6 +21,6 @@ class Task(db.Model):
             "title": self.title,
             "description": self.description,
             "is_complete": bool(self.completed_at),
-            "goal_id": self.goal_id
+            "goal_id": self.goal_id # just for wave 6
         }
         return task_as_dict

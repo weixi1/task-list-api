@@ -11,7 +11,7 @@ class Goal(db.Model):
         goal_as_dict = {
             "id": self.id,
             "title": self.title,
-            "tasks": [task.id for task in self.tasks] 
+            "tasks": [task.id for task in self.tasks] # just for wave 6
         }
         
         return goal_as_dict
