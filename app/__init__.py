@@ -1,9 +1,14 @@
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 from .db import db, migrate
 from .models import task, goal
 from app.routes.task_routes import tasks_bp
 from app.routes.goal_routes import goals_bp
 import os
+
+db = SQLAlchemy()
+migrate = Migrate()
 
 def create_app(config=None):
     app = Flask(__name__)
