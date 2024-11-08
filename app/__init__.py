@@ -7,8 +7,6 @@ from app.routes.task_routes import tasks_bp
 from app.routes.goal_routes import goals_bp
 import os
 
-db = SQLAlchemy()
-migrate = Migrate()
 
 def create_app(config=None):
     app = Flask(__name__)

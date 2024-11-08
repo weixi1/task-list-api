@@ -43,9 +43,9 @@ def get_one_goal(goal_id):
 def validate_goal(goal_id):
     try:
         goal_id = int(goal_id)
-    except:
+    except ValueError:
         response = {"message": f"goal {goal_id} invalid"}
-        abort(make_response(response , 400))
+        abort(make_response(response, 400))
 
     query = db.select(Goal).where(Goal.id == goal_id)
     goal = db.session.scalar(query)
