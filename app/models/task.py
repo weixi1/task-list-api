@@ -18,6 +18,7 @@ class Task(db.Model):
             "is_complete": bool(self.completed_at)
         }
         return task_as_dict
+    
 
 # @classmethod
 # def from_dict(cls, task_data):
