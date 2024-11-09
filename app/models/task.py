@@ -6,10 +6,9 @@ from ..db import db
 
 class Task(db.Model):
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    title: Mapped[str] = mapped_column()  
-    description: Mapped[str] = mapped_column() 
-    completed_at: Mapped[Optional[datetime]] = mapped_column(nullable=True) 
-
+    title: Mapped[str] = mapped_column()
+    description: Mapped[str] = mapped_column()
+    completed_at: Mapped[Optional[datetime]] = mapped_column(nullable=True)
 
     goal_id: Mapped[Optional[int]] = mapped_column(ForeignKey("goal.id"), nullable=True)
 

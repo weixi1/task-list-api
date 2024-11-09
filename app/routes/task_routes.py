@@ -146,7 +146,7 @@ def patch_complete(task_id):
         "Content-Type": "application/json"
     }
     data = {
-        "channel" : "#task-notifications",
+        "channel" : "#api-test-channel",
         "text": f"Someone just completed the task {task.title}"
     }
 
