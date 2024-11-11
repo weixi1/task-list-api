@@ -1,4 +1,4 @@
-"""empty message
+"""adds Task model
 
 Revision ID: 80a00b32f2ea
 Revises: 
@@ -26,7 +26,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('title', sa.String(), nullable=False),
     sa.Column('description', sa.String(), nullable=False),
-    sa.Column('completed_at', sa.Boolean(), nullable=False),
+    sa.Column('completed_at', sa.DateTime(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     # ### end Alembic commands ###
