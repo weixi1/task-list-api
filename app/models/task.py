@@ -13,13 +13,22 @@ class Task(db.Model):
     goal_id: Mapped[Optional[int]] = mapped_column(ForeignKey("goal.id"), nullable=True)
 
     goal: Mapped[Optional["Goal"]] = relationship("Goal", backref="tasks", lazy="joined")
-
+    
     def to_dict(self):
         task_as_dict ={
             "id": self.id,
             "title": self.title,
             "description": self.description,
             "is_complete": bool(self.completed_at),
+        }
+
+        if self.goal:
+            task_as_dict ={
+            "id": self.id,
+            "title": self.title,
+            "description": self.description,
+            "is_complete": bool(self.completed_at),
             "goal_id": self.goal_id # just for wave 6
         }
+            
         return task_as_dict
