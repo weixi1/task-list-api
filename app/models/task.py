@@ -12,7 +12,7 @@ class Task(db.Model):
 
     goal_id: Mapped[Optional[int]] = mapped_column(ForeignKey("goal.id"), nullable=True)
 
-    goal: Mapped[Optional["Goal"]] = relationship("Goal", backref="tasks", lazy="joined")
+    goal: Mapped[Optional["Goal"]] = relationship("Goal", back_populates="tasks")
     
     def to_dict(self):
         task_as_dict ={
